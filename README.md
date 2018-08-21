@@ -15,7 +15,7 @@ git add {nome do arquivo} ou git add
 ### Para enviar / commitar o código
 git commit -m "{mensagem do commit}"
 
-### Para ver o Log
+### Para ver giot o Log
 git log
 
 ### Para ver a situação di working dir
@@ -26,3 +26,11 @@ git push
 
 ### Importande qundo estiver na rede da UNIVALI
 export PAGER=
+
+```java
+public void main(String args[]){
+	int i = 0;
+	i++;
+	System.out.println("Paulo <---");
+}
+```
