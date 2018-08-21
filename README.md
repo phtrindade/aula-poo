@@ -1,4 +1,4 @@
-##para baixar gitportable
+##para baixar  gitportable
 
 busca no google = https://www.markdownguide.org/cheat-sheet/
 #Paulo H Trindade
