@@ -1,3 +1,5 @@
+##para baixar gitportable
+
 busca no google = https://www.markdownguide.org/cheat-sheet/
 #Paulo H Trindade
 ## Objetivo
@@ -34,3 +36,7 @@ public void main(String args[]){
 	System.out.println("Paulo <---");
 }
 ```
+criar arquivo .gitignore
+
+para d
+
