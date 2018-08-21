@@ -4,9 +4,11 @@ busca no google = https://www.markdownguide.org/cheat-sheet/
 Repositório para mante r os arquivos da disciplina de poo
 
 ## comandos importantes para lembrar
-### clonar repositório
-git clone e ("endereço")
 
+### clonar repositório
+```
+git clone e {"endereço"}
+```
 ### Para add arquivos no stage
 git add {nome do arquivo} ou git add
 
@@ -19,7 +21,7 @@ git log
 ### Para ver a situação di working dir
 git status
 
-### PAra enviar as informações para repositório
+### Para enviar as informações para repositório
 git push
 
 ### Importande qundo estiver na rede da UNIVALI
