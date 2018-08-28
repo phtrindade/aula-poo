@@ -1,4 +1,4 @@
-##para baixar  gitportable
+﻿##para baixar  gitportable
 
 busca no google = https://www.markdownguide.org/cheat-sheet/
 #Paulo H Trindade
@@ -12,7 +12,7 @@ Repositório para mante r os arquivos da disciplina de poo
 git clone e {"endereço"}
 ```
 ### Para add arquivos no stage
-git add {nome do arquivo} ou git add
+git add {nome do arquivo} ou git add .
 
 ### Para enviar / commitar o código
 git commit -m "{mensagem do commit}"
@@ -40,3 +40,8 @@ criar arquivo .gitignore
 
 para d
 
+##Para inicio diário Git Hub
+#no MINGW64
+ USE comando: cd "c:/Users/Trindade/OneDrive - UNIVALI/Engenharia/engenharia/POO/POO2"
+git clone: git clone https://github.com/phtrindade/aula-poo.git
+git
