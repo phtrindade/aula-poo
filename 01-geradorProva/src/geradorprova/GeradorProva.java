@@ -32,8 +32,7 @@ import java.util.ArrayList;
                         System.out.println("Valor invalido, repita!!!");
                 }
             }
-            
-        
+                   
             while(true){
                 System.out.print("Digite 'O' para questões Objetivas, 'D' para Discursiva e 'X'  para SAIR.");
                 String decisao=s.nextLine();
@@ -52,25 +51,18 @@ import java.util.ArrayList;
                          troca[j]=s.nextLine();
                     }
                     objetivas.setOpcoes(troca);
-                    //System.out.print("Alternativa correta da questão: ");
-                    //objetivas.setRespostaCorreta(s.nextInt()-1);
-                   //s.nextLine();
-                    //Integer.parseInt(s.nextLine()); 
-                   String x;
+                    
+                    String x;
                     while(true){
                             System.out.print("Alternativa correta da questão: ");
-                            //objetivas.setRespostaCorreta(s.nextInt()-1);
                             x = s.nextLine();                   
                         try{
-                           
                             objetivas.setRespostaCorreta(Integer.parseInt(x));
                             break;
                         }catch(Exception e){
                             System.out.println("Valor invalido, repita!!!");
                         }
                     }
-                    
-                    
                     
                     String pesoQuestaoO;
                     while(true){
@@ -83,20 +75,27 @@ import java.util.ArrayList;
                             System.out.println("Valor invalido, repita!!!");
                         }
                     }
-                    
-                    
                     p.getListaQuestoesO().add(objetivas);
                     
-                }else if(decisao.equalsIgnoreCase("d")){
+                    }else if(decisao.equalsIgnoreCase("d")){
                     
                     // criar discursiva
                     Discursiva disc;
                      disc=new Discursiva();
                     System.out.print("Digite a pergunta da questão: ");
                     disc.setPergunta(s.nextLine());
-                    System.out.print("Digite o peso da questão: ");
-                    disc.setPeso(s.nextDouble());
-                    s.nextLine();
+                    
+                    String pesoQuestaoD;
+                    while(true){
+                             System.out.print("Peso da questão: ");
+                                pesoQuestaoD = s.nextLine();
+                        try{
+                             disc.setPeso(Double.parseDouble(pesoQuestaoD));
+                            break;
+                        }catch(Exception e){
+                            System.out.println("Valor invalido, repita!!!");
+                        }
+                    }
                     System.out.print("Digite o critério de avaliação da questão: ");
                     disc.setCriterioCorrecao(s.nextLine());
                     p.getListaQuestoesD().add(disc);
@@ -106,26 +105,28 @@ import java.util.ArrayList;
                 }
             }
 
-           String prova=p.obtemProvaImpressao();
-           System.out.println(p.obtemDetalhes());
-           
-
+            String prova=p.obtemProvaImpressao();
+            System.out.println(p.obtemDetalhes());
             System.out.println(prova);
             System.out.print("Salvar em arquivo?(Sim/Nao)");
             String resposta=s.next();
            
-            if(resposta.equalsIgnoreCase("sim")){ //if(decisao.equalsIgnoreCase("d"))
+            if(resposta.equalsIgnoreCase("S")){ //if(decisao.equalsIgnoreCase("o")
                 try{
                     System.out.print("Nome do arquivo.txt ");
                     String arquivoAbrir=s.next();
                     File aqrv=new File(arquivoAbrir);
+                    
                     try (FileWriter out = new FileWriter(aqrv)) {
                         out.write(prova);
                         Desktop.getDesktop().open(aqrv);
+                    
                     }
+                    
 	  	}catch(IOException e){}
+            }else{
+           JOptionPane.showMessageDialog(null, prova);
             }
-           JOptionPane.showMessageDialog(null, prova);       
         } 
        
     }

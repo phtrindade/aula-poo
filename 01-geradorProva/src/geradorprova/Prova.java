@@ -54,30 +54,18 @@ public class Prova {
         return nomeDisciplina;
     }
 
-    /**
-     * @param nomeDisciplina the nomeDisciplina to set
-     */
     public void setNomeDisciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    /**
-     * @return the peso
-     */
     public int getPeso() {
         return peso;
     }
 
-    /**
-     * @param peso the peso to set
-     */
     public void setPeso(int peso) {
         this.peso = peso;
     }
 
-    /**
-     * @return the local
-     */
     public String getLocal() {
         return local;
     }

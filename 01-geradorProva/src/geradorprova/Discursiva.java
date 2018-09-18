@@ -1,22 +1,10 @@
 
 package geradorprova;
-/**
- *
- * @author paulo
- */
-public class Discursiva extends Questao {    
+ class Discursiva extends Questao {    
     private String criterioCorrecao;
-
-    /**
-     * @return the criterioCorrecao
-     */
     public String getCriterioCorrecao() {
         return criterioCorrecao;
     }
-
-    /**
-     * @param criterioCorrecao the criterioCorrecao to set
-     */
     public void setCriterioCorrecao(String criterioCorrecao) {
         this.criterioCorrecao = criterioCorrecao;
     }

@@ -7,21 +7,15 @@ public class Objetiva extends Questao {
     public String[] getOpcoes() {
         return opcoes;
     }
-    /**
-     * @param opcoes the opcoes to set
-     */
+    
     public void setOpcoes(String[] opcoes) {
         this.opcoes = opcoes;
     }
-    /**
-     * @return the respostaCorreta
-     */
+   
     public int getRespostaCorreta() { 
         return respostaCorreta;
     }
-    /**
-     * @param respostaCorreta the respostaCorreta to set
-     */
+  
     public void setRespostaCorreta(int respostaCorreta) {
         this.respostaCorreta = respostaCorreta;
     }
@@ -31,7 +25,7 @@ public class Objetiva extends Questao {
         String retornaObjetiva="";
          String[] opcoes=new String[5];
          String[] caracteres={"(a","(b","(c","(d","(e"};
-         retornaObjetiva+=this.getPergunta()+"\nAlternativas:\n";    //retornaObjetiva+=this.getPergunta()+"\nAlternativas:\n";
+         retornaObjetiva+=this.getPergunta()+"\nAlternativas:\n";    
              
              opcoes=this.getOpcoes();
              for (int j = 0; j < 5; j++) {
