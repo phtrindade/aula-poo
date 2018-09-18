@@ -1,4 +1,5 @@
 package geradorprova;
+
 import java.awt.Desktop;
 import javax.swing.JOptionPane;
 import java.util.Scanner;
