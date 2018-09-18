@@ -21,17 +21,17 @@ import java.util.ArrayList;
             p.setData(s.nextLine());
             System.out.print("Sala da prova: ");
             p.setLocal(s.nextLine());
-            
-            do{
+            String pesoProva;
+            while(true){
+                System.out.print("Peso da prova: ");
+                pesoProva = s.nextLine();
                 try{
-                    System.out.print("Peso da prova: ");
-                    p.setPeso(s.nextInt());
-                    s.nextLine();
+                    p.setPeso(Integer.parseInt(pesoProva));
                     break;
                     }catch(Exception e){
                         System.out.println("Valor invalido, repita!!!");
                 }
-            }while(false);
+            }
             
         
             while(true){
@@ -52,12 +52,39 @@ import java.util.ArrayList;
                          troca[j]=s.nextLine();
                     }
                     objetivas.setOpcoes(troca);
-                    System.out.print("Alternativa correta da questão: ");
-                    objetivas.setRespostaCorreta(s.nextInt()-1);
-                    s.nextLine();
-                    System.out.print("Peso da questão: ");
-                    objetivas.setPeso(s.nextInt());
-                    s.nextLine();
+                    //System.out.print("Alternativa correta da questão: ");
+                    //objetivas.setRespostaCorreta(s.nextInt()-1);
+                   //s.nextLine();
+                    //Integer.parseInt(s.nextLine()); 
+                   String x;
+                    while(true){
+                            System.out.print("Alternativa correta da questão: ");
+                            //objetivas.setRespostaCorreta(s.nextInt()-1);
+                            x = s.nextLine();                   
+                        try{
+                           
+                            objetivas.setRespostaCorreta(Integer.parseInt(x));
+                            break;
+                        }catch(Exception e){
+                            System.out.println("Valor invalido, repita!!!");
+                        }
+                    }
+                    
+                    
+                    
+                    String pesoQuestaoO;
+                    while(true){
+                             System.out.print("Peso da questão: ");
+                                pesoQuestaoO = s.nextLine();
+                        try{
+                             objetivas.setPeso(Integer.parseInt(pesoQuestaoO));
+                            break;
+                        }catch(Exception e){
+                            System.out.println("Valor invalido, repita!!!");
+                        }
+                    }
+                    
+                    
                     p.getListaQuestoesO().add(objetivas);
                     
                 }else if(decisao.equalsIgnoreCase("d")){
