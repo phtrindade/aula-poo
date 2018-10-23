@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">02-navegacao-atividades</string>
+    <string name="imc">IMC</string>
+    <string name="gcb">GCB</string>
+</resources>
