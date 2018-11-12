@@ -6,53 +6,69 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
+public class MainActivity extends AppCompatActivity
+{
+    //Calcula e e coloca a autonomia no textView
+    public void calculaAutonomia()
+    {
+        ArrayList<Abastecimento> listaAbastecimentos;
+        listaAbastecimentos = AbastecimentoDao.getLista(this.getApplicationContext());
 
-class MainActivity extends AppCompatActivity {
-
-    ArrayList<Abastecimento>lista = new ArrayList<>();
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Realm.init(this);
-        setContentView(R.layout.activity_main);
-
-        Realm realm = Realm.getDefaultInstance();
-        RealmResults<Abastecimento> results = realm.where(Abastecimento.class).findAll();
-        for (Abastecimento atual : results) {
-            lista.add(atual);
-        }
-
-        if(!lista.isEmpty()) {
-            // CALCULA A AUTONOMIA
+        TextView tvAutonomia = findViewById(R.id.tvAutonomia);
+        if(listaAbastecimentos.size() > 1)
+        {
+            double autonomia;
+            double km;
             double litros = 0;
-            double kilometragem = lista.get(lista.size()-1).getQuilometragem();
-            for (int i = 0; i < lista.size(); i++) {
-                litros += lista.get(i).getQuilometragem();
+
+            km = listaAbastecimentos.get(listaAbastecimentos.size() - 1).getQuilometragem() - listaAbastecimentos.get(0).getQuilometragem();
+
+            for (int i = 0; i < listaAbastecimentos.size() - 1; i++)
+            {
+                litros += listaAbastecimentos.get(i).getLitro();
             }
 
-            kilometragem /= litros;
-            TextView autonomia = (TextView) findViewById(R.id.tvAutonomia);
-            autonomia.setText(String.format("%.2f", kilometragem));
+            autonomia = km / litros;
+
+            NumberFormat nf = DecimalFormat.getInstance();
+            nf.setMaximumFractionDigits(2);
+            tvAutonomia.setText(nf.format(autonomia));
+        }
+        else
+        {
+            tvAutonomia.setText("--");
         }
     }
 
-    public void clicouAdicionar(View quemClicou){
-        Intent intencao = new Intent(this, add_Abastecimento.class);
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        if(!lista.isEmpty()) {
-            intencao.putExtra("kilometragem", lista.get(lista.size() - 1).getQuilometragem());
-        }else
-            intencao.putExtra("kilometragem", 0);
-        startActivityForResult(intencao, 1);
+        calculaAutonomia();
     }
 
-    public void clicouVisualizar(View quemClicou){
-        Intent intencao = new Intent(this, visualizarAbastecimentos.class);
-        startActivity(intencao);
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        calculaAutonomia();
+    }
+
+    public void onClickAdd(View v)
+    {
+        Intent intentAbrirListaAbastecimento = new Intent(this.getApplicationContext(), ListaActivity.class);
+        this.startActivity(intentAbrirListaAbastecimento);
+    }
+
+    public void onClickLista(View view) {
+        Intent intentAbrirListaAbastecimentoHolder = new Intent(this.getApplicationContext(), AbastecimentoHolder.class);
+        this.startActivity(intentAbrirListaAbastecimentoHolder);
     }
 }

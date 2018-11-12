@@ -19,7 +19,7 @@ public class datePick extends AppCompatActivity {
         DatePicker data = (DatePicker) findViewById(R.id.dpData);
         String dataString = ""+data.getDayOfMonth()+"/"+(data.getMonth()+1)+"/"+data.getYear();
 
-        Intent intencao = new Intent(this, add_Abastecimento.class);
+        Intent intencao = new Intent(this, addAbastecimentoActivity.class);
         intencao.putExtra("data", dataString);
         setResult(Activity.RESULT_OK, intencao);
         finish();

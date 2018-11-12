@@ -1,12 +1,24 @@
 <resources>
-    <string name="campo_preenchido">Campo deve ser preenchido</string>
-    <string name="km_maior">Km de ser maior que ultimo inserido</string>
-    <string name="app_name">05-Controle de Abastecimento</string>
-    <string-array name="PostosGasolina">
-        <item>TEXACO</item>
-        <item>IPIRANGA</item>
-        <item>SHELL</item>
-        <item>PETROBRAS</item>
-        <item>OUTROS</item>
+    <string name="app_name">Big Fuell Control</string>
+    <string name="autonomia">Quilometragem por Litro</string>
+    <string name="km_atual">Quilometragem Atual</string>
+    <string name="litros">Litros Abastecidos</string>
+    <string name="date">Data do Abastecimento</string>
+    <string name="posto">Bandeira do Posto</string>
+    <string name="salvar">Salvar</string>
+    <string name="lista">Abastecimentos anteriores</string>
+    <string-array name="postos" translatable="false">
+        <item>Texaco</item>
+        <item>Shell</item>
+        <item>Petrobras</item>
+        <item>Ipiranga</item>
     </string-array>
+    <string name="erro_vazio">Campo VAZIO!!!!!!!.</string>
+    <string name="erro_km">ERRO!!!Quilometragem menor que anterior</string>
+    <string name="erro_salvar">FALHA AO GRAVAR ARQUIVO.</string>
+    <string name="toast_salvar">ARQUIVO SALVO</string>
+    <string name="excluir">Deseja APAGAR Arquivo realmente?</string>
+    <string name="aviso">Ação não podera ser desfeita</string>
+    <string name="sim">SIM</string>
+    <string name="nao">NÃO</string>
 </resources>

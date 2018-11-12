@@ -10,15 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <activity android:name=".AbastecimentoAdapter"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".add_Abastecimento" />
-        <activity android:name=".visualizarAbastecimentos" />
-        <activity android:name=".datePick"></activity>
+        <activity android:name=".addAbastecimentoActivity" />
+
+        <activity android:name=".ListaActivity"/>
+
+
     </application>
 
 </manifest>
