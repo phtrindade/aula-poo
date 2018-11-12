@@ -1,24 +1,24 @@
 <resources>
-    <string name="app_name">Big Fuell Control</string>
-    <string name="autonomia">Quilometragem por Litro</string>
-    <string name="km_atual">Quilometragem Atual</string>
+    <string name="app_name">Controle de Combustível</string>
+    <string name="autonomia">Autonomia</string>
+    <string name="km_atual">Km Atual</string>
     <string name="litros">Litros Abastecidos</string>
     <string name="date">Data do Abastecimento</string>
     <string name="posto">Bandeira do Posto</string>
     <string name="salvar">Salvar</string>
-    <string name="lista">Abastecimentos anteriores</string>
+    <string name="lista">Listar</string>
     <string-array name="postos" translatable="false">
         <item>Texaco</item>
         <item>Shell</item>
         <item>Petrobras</item>
         <item>Ipiranga</item>
     </string-array>
-    <string name="erro_vazio">Campo VAZIO!!!!!!!.</string>
-    <string name="erro_km">ERRO!!!Quilometragem menor que anterior</string>
-    <string name="erro_salvar">FALHA AO GRAVAR ARQUIVO.</string>
-    <string name="toast_salvar">ARQUIVO SALVO</string>
-    <string name="excluir">Deseja APAGAR Arquivo realmente?</string>
-    <string name="aviso">Ação não podera ser desfeita</string>
-    <string name="sim">SIM</string>
-    <string name="nao">NÃO</string>
+    <string name="erro_vazio">Campo Vazio!!!Digite.</string>
+    <string name="erro_km">Erro na Kilometragem.</string>
+    <string name="erro_salvar">Falha ao Salvar.</string>
+    <string name="toast_salvar">Sucesso ao Salvar.</string>
+    <string name="excluir">Dados serão apagados</string>
+    <string name="aviso">Não poderá ser desfeito.</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 </resources>

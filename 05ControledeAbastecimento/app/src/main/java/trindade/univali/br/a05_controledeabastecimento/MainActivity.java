@@ -10,65 +10,62 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity
-{
-    //Calcula e e coloca a autonomia no textView
-    public void calculaAutonomia()
+
+
+    public class MainActivity extends AppCompatActivity
     {
-        ArrayList<Abastecimento> listaAbastecimentos;
-        listaAbastecimentos = AbastecimentoDao.getLista(this.getApplicationContext());
+        //Calcula e e coloca a autonomia no textView
+        public void calculaAutonomia(){
 
-        TextView tvAutonomia = findViewById(R.id.tvAutonomia);
-        if(listaAbastecimentos.size() > 1)
-        {
-            double autonomia;
-            double km;
-            double litros = 0;
+            ArrayList<Abastecimento> listaAbastecimentos;
+            listaAbastecimentos = AbDao.getLista(this.getApplicationContext());
 
-            km = listaAbastecimentos.get(listaAbastecimentos.size() - 1).getQuilometragem() - listaAbastecimentos.get(0).getQuilometragem();
+            TextView tvAutonomia = findViewById(R.id.tvAutonomia);
+            if(listaAbastecimentos.size() > 1){
 
-            for (int i = 0; i < listaAbastecimentos.size() - 1; i++)
-            {
-                litros += listaAbastecimentos.get(i).getLitro();
+                double autonomia;
+                double km;
+                double litros = 0;
+
+                km = listaAbastecimentos.get(listaAbastecimentos.size() - 1).getKm() - listaAbastecimentos.get(0).getKm();
+
+                for (int i = 0; i < listaAbastecimentos.size() - 1; i++)
+                {
+                    litros += listaAbastecimentos.get(i).getLitros();
+                }
+
+                autonomia = km / litros;
+
+                NumberFormat nf = DecimalFormat.getInstance();
+                nf.setMaximumFractionDigits(2);
+                tvAutonomia.setText(nf.format(autonomia));
             }
-
-            autonomia = km / litros;
-
-            NumberFormat nf = DecimalFormat.getInstance();
-            nf.setMaximumFractionDigits(2);
-            tvAutonomia.setText(nf.format(autonomia));
+            else
+            {
+                tvAutonomia.setText("--");
+            }
         }
-        else
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState)
         {
-            tvAutonomia.setText("--");
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            calculaAutonomia();
+        }
+
+        @Override
+        public void onResume()
+        {
+            super.onResume();
+
+            calculaAutonomia();
+        }
+
+        public void onClickLista(View v)
+        {
+            Intent intentAbrirListaAbastecimento = new Intent(this.getApplicationContext(), AbListaActivity.class);
+            this.startActivity(intentAbrirListaAbastecimento);
         }
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        calculaAutonomia();
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-
-        calculaAutonomia();
-    }
-
-    public void onClickAdd(View v)
-    {
-        Intent intentAbrirListaAbastecimento = new Intent(this.getApplicationContext(), ListaActivity.class);
-        this.startActivity(intentAbrirListaAbastecimento);
-    }
-
-    public void onClickLista(View view) {
-        Intent intentAbrirListaAbastecimentoHolder = new Intent(this.getApplicationContext(), AbastecimentoHolder.class);
-        this.startActivity(intentAbrirListaAbastecimentoHolder);
-    }
-}
