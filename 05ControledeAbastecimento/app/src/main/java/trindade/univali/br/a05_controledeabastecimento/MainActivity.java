@@ -27,9 +27,9 @@ import java.util.ArrayList;
                 double km;
                 double litros = 0;
 
-                km = listaAbastecimentos.get(listaAbastecimentos.size() - 1).getKm() - listaAbastecimentos.get(0).getKm();
+                km = listaAbastecimentos.get(listaAbastecimentos.size()-1 ).getKm() - listaAbastecimentos.get(0).getKm();
 
-                for (int i = 0; i < listaAbastecimentos.size() - 1; i++)
+                for (int i = 0; i < listaAbastecimentos.size() -1; i++)
                 {
                     litros += listaAbastecimentos.get(i).getLitros();
                 }

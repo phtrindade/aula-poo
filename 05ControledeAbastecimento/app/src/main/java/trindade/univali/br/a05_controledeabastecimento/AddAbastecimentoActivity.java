@@ -23,8 +23,7 @@ public class AddAbastecimentoActivity extends AppCompatActivity {
         return false;
     }
 
-    public void onClickSalvar(View v)
-    {
+    public void onClickSalvar(View v){
         EditText etKmAtual = findViewById(R.id.etKmAtual);
         EditText etLitros = findViewById(R.id.etLitros);
         EditText etData = findViewById(R.id.etData);
@@ -40,8 +39,7 @@ public class AddAbastecimentoActivity extends AppCompatActivity {
             erro = true;
 
         //Verifica se o Km inserido eh menor que o anterior
-        if(!erro)
-        {
+        if(!erro){
             double ultimoKm = this.getIntent().getDoubleExtra("ultimoKm", -1);
             double kmDigitado = Double.parseDouble(etKmAtual.getText().toString());
             if (kmDigitado <= ultimoKm)
@@ -51,8 +49,8 @@ public class AddAbastecimentoActivity extends AppCompatActivity {
             }
         }
 
-        if(!erro)
-        {
+        if(!erro){
+
             Abastecimento abastecimento = new Abastecimento();
 
             abastecimento.setKm(Double.parseDouble(etKmAtual.getText().toString()));
@@ -62,21 +60,34 @@ public class AddAbastecimentoActivity extends AppCompatActivity {
 
             boolean salvar = AbDao.salvar(this.getApplicationContext(), abastecimento);
 
-            if (salvar)
-            {
+            if (salvar){
                 setResult(1);
                 finish();
-            }
-            else
-            {
+            }else{
                 Toast.makeText(this.getApplicationContext(), getString(R.string.erro_salvar), Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+    public void onClickFAB2(View v){
+
+
+        Abastecimento abastecimento = new Abastecimento();
+
+
+
+        boolean excluir = AbDao.excluir(this.getApplicationContext(), abastecimento);
+
+        if (excluir){
+            setResult(1);
+            finish();
+        }else{
+            Toast.makeText(this.getApplicationContext(), getString(R.string.excluir), Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_abastecimento);
 

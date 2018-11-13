@@ -45,8 +45,7 @@ public class AbDao {
     {
         File arquivo = new File(c.getFilesDir().getPath() + NOME_ARQUIVO);
 
-        try
-        {
+        try{
             FileReader leitor = new FileReader(arquivo);
             BufferedReader leitorDeLinha = new BufferedReader(leitor);
 

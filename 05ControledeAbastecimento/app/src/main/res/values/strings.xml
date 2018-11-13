@@ -17,6 +17,7 @@
     <string name="erro_km">Erro na Kilometragem.</string>
     <string name="erro_salvar">Falha ao Salvar.</string>
     <string name="toast_salvar">Sucesso ao Salvar.</string>
+    <string name="BTexcluir">Excluir</string>
     <string name="excluir">Dados serão apagados</string>
     <string name="aviso">Não poderá ser desfeito.</string>
     <string name="sim">Sim</string>

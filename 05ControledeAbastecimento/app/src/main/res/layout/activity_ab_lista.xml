@@ -15,15 +15,29 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/colorPrimary"
-        android:src="@drawable/ic_add_black_24dp"
         android:onClick="onClickFAB"
+        android:src="@drawable/ic_add_black_24dp"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="60dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="8dp"
+
+        android:backgroundTint="@color/colorDelete"
+        android:onClick="onClickFAB2"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/fab"
+        app:layout_constraintEnd_toStartOf="@+id/fab"
+        tools:srcCompat="@android:drawable/ic_menu_delete" />
+
 
 </android.support.constraint.ConstraintLayout>
