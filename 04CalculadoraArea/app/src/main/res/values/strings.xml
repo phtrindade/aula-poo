@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">04-CalculadoraArea</string>
-    <string name="seleciona_a_forma">Seleciona a forma:</string>
-    <string name="resultado_triangulo">Resultado Triangulo</string>
-    <string name="Area">Área:</string>
-    <string name="image">image</string>
-    <string name="rea">Área:</string>
-    <string name="come_ar_novamente">Começar novamente</string>
-</resources>

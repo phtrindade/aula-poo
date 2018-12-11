@@ -13,13 +13,15 @@
         <item>Petrobras</item>
         <item>Ipiranga</item>
     </string-array>
-    <string name="erro_vazio">Campo Vazio!!!Digite.</string>
-    <string name="erro_km">Erro na Kilometragem.</string>
-    <string name="erro_salvar">Falha ao Salvar.</string>
-    <string name="toast_salvar">Sucesso ao Salvar.</string>
-    <string name="BTexcluir">Excluir</string>
-    <string name="excluir">Dados serão apagados</string>
-    <string name="aviso">Não poderá ser desfeito.</string>
+    <string name="erro_vazio">Este campon não pode estar vazio.</string>
+    <string name="erro_km">Km deve ser maior que o último inserido.</string>
+    <string name="erro_salvar">Falha ao salvar.</string>
+    <string name="toast_salvar">Salvo com sucesso.</string>
+    <string name="excluir">Gostaria de deletar este registro?</string>
+    <string name="aviso">Esta ação é permanente e não pode ser desfeita.</string>
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="quilometragem">Quilometragem</string>
 </resources>

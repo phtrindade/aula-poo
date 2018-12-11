@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".AddAbastecimentoActivity" />
-        <activity android:name=".AbListaActivity"></activity>
+        <activity android:name=".AbListaActivity" />
+        <activity android:name=".AbDetalhadoActivity"></activity>
     </application>
 
 </manifest>

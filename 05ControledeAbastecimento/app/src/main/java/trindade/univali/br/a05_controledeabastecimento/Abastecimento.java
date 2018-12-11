@@ -1,12 +1,16 @@
 package trindade.univali.br.a05_controledeabastecimento;
 
-public class Abastecimento {
+import java.io.Serializable;
+
+public class Abastecimento implements Serializable {
 
     private double km;
     private double litros;
     private String dataAbastecimento;
     private String posto;
-    private int id;
+    private long id;
+    private double lat;
+    private double lng;
 
     public double getKm() {
         return km;
@@ -40,11 +44,27 @@ public class Abastecimento {
         this.posto = posto;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }

@@ -13,7 +13,7 @@ public class AbListaActivity extends AppCompatActivity
 {
     private AbAdapter adaptador;
 
-    private final int RC_ADICIONAR_AVALIACAO = 1111;
+    public static final int RC_ADICIONAR_ABASTECIMENTO = 1111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,14 +50,14 @@ public class AbListaActivity extends AppCompatActivity
         intencaoAbrirTelaAdicionar.putExtra("ultimoKm", ultimoKm);
 
 
-        startActivityForResult(intencaoAbrirTelaAdicionar, RC_ADICIONAR_AVALIACAO);
+        startActivityForResult(intencaoAbrirTelaAdicionar, RC_ADICIONAR_ABASTECIMENTO);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == RC_ADICIONAR_AVALIACAO)
+        if(requestCode == RC_ADICIONAR_ABASTECIMENTO)
         {
             if(resultCode == 1)
             {

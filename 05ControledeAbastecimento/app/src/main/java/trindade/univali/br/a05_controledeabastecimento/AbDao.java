@@ -1,6 +1,9 @@
 package trindade.univali.br.a05_controledeabastecimento;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,71 +12,38 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class AbDao {
 
     private static ArrayList<Abastecimento> AL_CACHE = new ArrayList<>();
 
-    private static final String NOME_ARQUIVO = "abastecimentos.txt";
-
-    public static boolean salvar(Context c, Abastecimento aSerSalva)
+    public static boolean salvar(Context c, Abastecimento aSerSalvo)
     {
-        aSerSalva.setId(AL_CACHE.size());
-        AL_CACHE.add(aSerSalva);
+        BancoDados meuDb = new BancoDados(c);
+        SQLiteDatabase db = meuDb.getWritableDatabase();
 
-        String abastecimentoEmString = "";
-        abastecimentoEmString += aSerSalva.getDataAbastecimento() + ";";
-        abastecimentoEmString += aSerSalva.getKm() + ";";
-        abastecimentoEmString += aSerSalva.getLitros() + ";";
-        abastecimentoEmString += aSerSalva.getPosto() + '\n';
+        ContentValues chaveValor = new ContentValues();
+        chaveValor.put("km", aSerSalvo.getKm());
+        chaveValor.put("litros", aSerSalvo.getLitros());
+        chaveValor.put("lat", aSerSalvo.getLat());
+        chaveValor.put("lng", aSerSalvo.getLng());
+        chaveValor.put("data", aSerSalvo.getDataAbastecimento());
+        chaveValor.put("posto", aSerSalvo.getPosto());
+        long id = db.insert("abastecimento", null, chaveValor);
+        aSerSalvo.setId(id);
 
-        File arquivo = new File(c.getFilesDir().getPath() + NOME_ARQUIVO);
-        try
-        {
-            FileWriter escritor = new FileWriter(arquivo, true);
-            escritor.write(abastecimentoEmString);
-            escritor.close();
-            return true;
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-            return false;
-        }
+        AL_CACHE.add(aSerSalvo);
+        return true;
     }
 
-    public static boolean excluir(Context c, Abastecimento aSerExcluida)
+    public static boolean excluir(Context c, Abastecimento aSerExcluido)
     {
-        File arquivo = new File(c.getFilesDir().getPath() + NOME_ARQUIVO);
+        BancoDados meuDb = new BancoDados(c);
+        SQLiteDatabase db = meuDb.getWritableDatabase();
 
-        try{
-            FileReader leitor = new FileReader(arquivo);
-            BufferedReader leitorDeLinha = new BufferedReader(leitor);
-
-            String linhaAbastecimento = null;
-            String conteudoNovo = "";
-
-            int numeroLinha = 0;
-            while((linhaAbastecimento = leitorDeLinha.readLine()) != null)
-            {
-                if(aSerExcluida.getId() != numeroLinha)
-                {
-                    conteudoNovo += linhaAbastecimento + '\n';
-                }
-                numeroLinha++;
-            }
-            leitor.close();
-
-            FileWriter escritor = new FileWriter(arquivo, false);
-            escritor.write(conteudoNovo);
-            escritor.close();
-
-            getLista(c);
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-            return false;
-        }
+        String[] whereId = {String.valueOf(aSerExcluido.getId())};
+        db.delete("abastecimento", "id = ?", whereId);
+        getLista(c);
         return true;
     }
 
@@ -81,33 +51,24 @@ public class AbDao {
     {
         AL_CACHE = new ArrayList<>();
 
-        File arquivo = new File(c.getFilesDir().getPath() + NOME_ARQUIVO);
-        try
+        BancoDados meuDb = new BancoDados(c);
+        SQLiteDatabase db = meuDb.getReadableDatabase();
+
+        String SQLBuscarAbastecimentos = "SELECT km, litros, lat, lng, data, posto, id FROM abastecimento";
+        Cursor ponteiro = db.rawQuery(SQLBuscarAbastecimentos, null);
+
+        while(ponteiro.moveToNext())
         {
-            FileReader leitor = new FileReader(arquivo);
-            BufferedReader leitorDeLinha = new BufferedReader(leitor);
-
-            String linhaAbastecimento = null;
-
-            int numeroLinha = 0;
-            while((linhaAbastecimento = leitorDeLinha.readLine()) != null)
-            {
-                String[] partesDaLinha = linhaAbastecimento.split(";");
-                Abastecimento atual = new Abastecimento();
-                atual.setId(numeroLinha);
-                atual.setDataAbastecimento(partesDaLinha[0]);
-                atual.setKm(Double.parseDouble(partesDaLinha[1]));
-                atual.setLitros(Double.parseDouble(partesDaLinha[2]));
-                atual.setPosto(partesDaLinha[3]);
-                AL_CACHE.add(atual);
-                numeroLinha++;
-            }
+            Abastecimento daVez = new Abastecimento();
+            daVez.setKm(ponteiro.getDouble(0));
+            daVez.setLitros(ponteiro.getDouble(1));
+            daVez.setLat(ponteiro.getDouble(2));
+            daVez.setLng(ponteiro.getDouble(3));
+            daVez.setDataAbastecimento(ponteiro.getString(4));
+            daVez.setPosto(ponteiro.getString(5));
+            daVez.setId(ponteiro.getLong(6));
+            AL_CACHE.add((daVez));
         }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-
         return AL_CACHE;
     }
 }

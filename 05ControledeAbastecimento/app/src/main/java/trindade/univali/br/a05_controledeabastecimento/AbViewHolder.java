@@ -2,6 +2,7 @@ package trindade.univali.br.a05_controledeabastecimento;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -19,6 +20,17 @@ public class AbViewHolder extends RecyclerView.ViewHolder{
     public AbViewHolder(View itemView)
     {
         super(itemView);
+
+        itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Intent abrirEdicao = new Intent(view.getContext(), AbDetalhadoActivity.class);
+                abrirEdicao.putExtra("abastecimento", AbViewHolder.this.objetoSendoExibido);
+                ((AbListaActivity)view.getContext()).startActivityForResult(abrirEdicao, AbListaActivity.RC_ADICIONAR_ABASTECIMENTO);
+            }
+        });
 
         itemView.setOnLongClickListener(new View.OnLongClickListener()
         {
